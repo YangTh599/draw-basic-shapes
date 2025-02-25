@@ -42,9 +42,12 @@ def main(): # MAIN FUNCTION
 
     l = Line(window, THANOS, [10,10], [50,50], 5)
     rectangle1 = Rectangle(window, COTTON_CANDY, 90,90,100,200)
-    c1 = Circ(window, (400,500),  LIME, 50, 10)
+    c1 = Circ(window, LIME, (400,500), 50, 10)
 
-    shapes = [l,rectangle1,c1]
+    p1_shape_coords = [[500,20],[550,120], [525,202],[480,170],[499,50],[350,30]]
+    p1 = Polygon(window, MAGENTA,p1_shape_coords)
+
+    shapes = [l,rectangle1,c1,p1]
 
     while run: # run set to true, program runs while run is true.
 
@@ -87,7 +90,7 @@ class Rectangle():
 
 class Circ():
     
-    def __init__(self, window, center_coords, color, radius, width=0):
+    def __init__(self, window, color, center_coords, radius, width=0):
         self.window = window
         self.color = color
         self.center = center_coords
@@ -96,6 +99,18 @@ class Circ():
 
     def draw(self):
         pygame.draw.circle(self.window, self.color, self.center, self.r, self.width)
+
+
+class Polygon():
+
+    def __init__(self,window, color, points, width=0):
+        self.window = window
+        self.color = color
+        self.points = points
+        self.width = width
+
+    def draw(self):
+        pygame.draw.polygon(self.window,self.color,self.points,self.width)
 
 
 if __name__ == "__main__": 
